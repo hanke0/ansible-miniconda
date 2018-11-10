@@ -1,5 +1,4 @@
 ---
-
 - name: check for installation of Miniconda
   stat:
     path: '{{ miniconda_path }}'
