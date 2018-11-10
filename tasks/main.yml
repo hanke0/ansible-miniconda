@@ -1,0 +1,46 @@
+---
+
+- name: check for installation of Miniconda
+  stat:
+    path: '{{ miniconda_path }}'
+  changed_when: false
+  register: miniconda_path_stat
+
+- when: not miniconda_path_stat.stat.exists
+  block:
+    - name: download miniconda installer...
+      get_url:
+        url: '{{miniconda_installer_url}}'
+        dest: '{{ miniconda_installer_file }}'
+        timeout: '600'
+        mode: 0777
+
+    - name: installing miniconda {{miniconda_installer_file}} -b -p {{miniconda_path}} ....
+      command: '{{miniconda_installer_file}} -b -p {{miniconda_path}}'
+      args:
+        creates: '{{miniconda_path}}'
+      become: '{{ miniconda_use_sudo }}'
+      become_user: root
+    
+    - name: set previlige in miniconda path
+      file:
+        path: '{{miniconda_path}}'
+        recurse: yes
+        mode: u+rw,g+rw,o+rw
+      become: '{{ miniconda_use_sudo }}'
+      become_user: root
+
+  always:
+    - name: deleting miniconda installer...
+      file:
+        path: '{{ miniconda_installer_file }}'
+        state: absent
+
+- name: add activate miniconda in bashrc
+  when: miniconda_activate_in_bashrc
+  blockinfile:
+    path: '{{ansible_env.HOME}}/.bashrc'
+    block: |
+      # add by ansible-miniconda
+      export PATH="{{miniconda_path}}/bin:${PATH}"
+    create: yes

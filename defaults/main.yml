@@ -1,0 +1,16 @@
+---
+
+# miniconda download url
+miniconda_installer_url: https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+
+
+miniconda_installer_file: /tmp/miniconda.sh
+
+# miniconda install path
+miniconda_path: /usr/local/miniconda
+
+miniconda_bin: '{{ miniconda_install_path }}/bin/conda'
+
+miniconda_activate_in_bashrc: yes
+
+miniconda_use_sudo: yes
