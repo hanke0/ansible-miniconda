@@ -1,7 +1,7 @@
-ko-han.miniconda
+ko-han.ansible_miniconda
 =========
 
-Installs [Miniconda](https://conda.io/miniconda.html)
+Installs [Miniconda](https://conda.io/miniconda.html) use ansible
 
 
 Role Variables
@@ -26,14 +26,20 @@ miniconda_use_sudo: yes
 
 ```
 
-
 Example Playbook
 ----------------
 
 ```yml
 - hosts: servers
   roles:
-    - ko-han.miniconda
+    ko_han.ansible_miniconda
+```
+
+How to install
+----------------
+
+```bash
+ansible-galaxy install ko_han.ansible_miniconda
 ```
 
 License
