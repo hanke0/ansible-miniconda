@@ -6,8 +6,25 @@ Installs [Miniconda](https://conda.io/miniconda.html)
 
 Role Variables
 --------------
+```yml
+# miniconda download url
+miniconda_installer_url: https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 
-See [defaults/main.yml](defaults/main.yml)
+# miniconda installer file full path
+miniconda_installer_file: /tmp/miniconda.sh
+
+# miniconda install to this path
+miniconda_path: /usr/local/miniconda
+
+miniconda_bin: '{{ miniconda_install_path }}/bin/conda'
+
+# add miniconda to path
+miniconda_activate_in_bashrc: yes
+
+# become root if necessary
+miniconda_use_sudo: yes
+
+```
 
 
 Example Playbook
