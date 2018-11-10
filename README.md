@@ -29,10 +29,20 @@ miniconda_use_sudo: yes
 Example Playbook
 ----------------
 
+1. simple
 ```yml
 - hosts: servers
   roles:
-    ko_han.ansible_miniconda
+    - ko_han.ansible_miniconda
+```
+
+2. set vars
+```yml
+# installs Miniconda
+- host: python-dev-host
+  roles:
+    - role: ko_han.ansible_miniconda
+      miniconda_path: /root/miniconda
 ```
 
 How to install
