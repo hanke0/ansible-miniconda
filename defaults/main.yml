@@ -7,7 +7,7 @@ miniconda_installer_file: /tmp/miniconda.sh
 # miniconda install path
 miniconda_path: /usr/local/miniconda
 
-miniconda_bin: '{{ miniconda_install_path }}/bin/conda'
+miniconda_bin: '{{ miniconda_path }}/bin/conda'
 
 miniconda_activate_in_bashrc: yes
 
