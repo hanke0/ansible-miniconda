@@ -7,6 +7,13 @@
 
 - when: not miniconda_path_stat.stat.exists
   block:
+    - name: make sure bzip2 is installed
+      package:
+        name: bzip2
+        state: present
+      become: yes
+      become_user: root
+
     - name: download miniconda installer...
       get_url:
         url: '{{miniconda_installer_url}}'
