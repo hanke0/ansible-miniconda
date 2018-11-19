@@ -9,6 +9,6 @@ miniconda_path: /usr/local/miniconda
 
 miniconda_bin: '{{ miniconda_path }}/bin/conda'
 
-miniconda_activate_in_bashrc: yes
+miniconda_activate_in_bashrc: no
 
 miniconda_use_sudo: yes
